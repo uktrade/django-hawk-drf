@@ -57,8 +57,6 @@ tox
 - [PyPI Package](https://pypi.org/project/django-hawk-drf/)
 - [Test PyPI Package](https://test.pypi.org/project/django-hawk-drf/)
 
-Running `make build` will do the following:
-- build the `django-hawk-drf` package
-- push the `django-hawk-drf` package to PyPI
-
-You can push to the test PyPI instance by running `build-test`
+Running `make build` will build the package into the `dist/` directory
+Running `make push-pypi-test` will push the built package to Test PyPI
+Running `make push-pypi` will push the built package to PyPI

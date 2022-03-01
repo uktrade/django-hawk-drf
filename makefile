@@ -23,12 +23,16 @@ cleanup-code:
 tests:
 	tox
 
-build-test:
+build:
 	pip install --upgrade build twine
 	python -m build
-	twine upload --repository testpypi dist/*
 
 build:
 	pip install --upgrade build twine
 	python -m build
+
+push-pypi-test:
+	twine upload --repository testpypi dist/*
+
+push-pypi:
 	twine upload dist/*
