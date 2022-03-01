@@ -1,0 +1,19 @@
+# Package dependancies
+Django>=2.2, <4.1
+django-hawk
+djangorestframework
+mohawk
+
+# Testing
+tox
+freezegun
+coverage
+
+# Linting and type checking
+isort
+flake8
+black
+mypy
+django-stubs
+djangorestframework-stubs
+types-freezegun
