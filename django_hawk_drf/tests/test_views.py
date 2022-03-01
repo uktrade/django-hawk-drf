@@ -31,6 +31,11 @@ def hawk_auth_sender(
 
 
 class DjangoHawkViewTests:
+    """
+    This should be kept up to date with:
+    https://github.com/uktrade/django-hawk/blob/main/django_hawk/tests/test_views.py#L33
+    """
+
     view_name: str = ""
 
     def get_path(self) -> str:
