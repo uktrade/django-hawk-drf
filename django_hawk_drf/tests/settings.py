@@ -32,7 +32,7 @@ MEDIA_ROOT = os.path.join(TESTS_PATH, "media")
 
 STATIC_ROOT = os.path.join(TESTS_PATH, "static")
 
-ROOT_URLCONF = "django_hawk.tests.urls"
+ROOT_URLCONF = "django_hawk_drf.tests.urls"
 
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
