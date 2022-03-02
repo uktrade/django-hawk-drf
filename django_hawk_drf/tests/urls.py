@@ -1,4 +1,5 @@
 from django.urls import path
+
 from django_hawk_drf.tests.views import ExampleViewSet
 
 urlpatterns = [
