@@ -102,16 +102,15 @@ bcrypt = ["bcrypt"]
 
 [[package]]
 name = "django-hawk"
-version = "0.0.2"
+version = "1.0.0"
 description = "Authenticate Django Views with HAWK"
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.6.2,<4.0"
 
 [package.dependencies]
 Django = ">=2.2,<4.1"
-djangorestframework = "*"
-mohawk = "*"
+mohawk = ">=1.0.0,<2.0"
 
 [[package]]
 name = "django-stubs"
@@ -511,7 +510,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=4.6)", "pytest-black (
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.6.2,<4.0"
-content-hash = "b69086b6f210b9893a818b4af7369950ec5893da6a0bb5ea57700e8d36249c95"
+content-hash = "45f1c0a0d21bdb95f428dcaf3fa886d0152461c0d9b9fc81330edac9488ed20e"
 
 [metadata.files]
 asgiref = [
@@ -613,8 +612,8 @@ django = [
     {file = "Django-3.2.16.tar.gz", hash = "sha256:3adc285124244724a394fa9b9839cc8cd116faf7d159554c43ecdaa8cdf0b94d"},
 ]
 django-hawk = [
-    {file = "django-hawk-0.0.2.tar.gz", hash = "sha256:f364cf205f6e996ce5f4798e28c979e7ab3edc56a69b8de87a0afdbb54dc27ac"},
-    {file = "django_hawk-0.0.2-py3-none-any.whl", hash = "sha256:885daf40d455bccd4991f104d17ca7f39aa8d41a9c406e9a05f3820314eb78a8"},
+    {file = "django_hawk-1.0.0-py3-none-any.whl", hash = "sha256:dbf4ac05352a86bf1013b81e739f7fc9e75451bfa004a25a9712954939db35c4"},
+    {file = "django_hawk-1.0.0.tar.gz", hash = "sha256:c4887281178fe599ee27ab4755513446a51e9a367b6fbc17a8dcfaf7ce801763"},
 ]
 django-stubs = [
     {file = "django-stubs-1.9.0.tar.gz", hash = "sha256:664843091636a917faf5256d028476559dc360fdef9050b6df87ab61b21607bf"},

@@ -23,8 +23,8 @@ homepage = "https://github.com/uktrade/django-hawk-drf/"
 [tool.poetry.dependencies]
 python = ">=3.6.2,<4.0"
 Django = ">=2.2,<4.1"
-django-hawk = ">=1.0, <2.0"
-mohawk = ">=1.0.0, <2.0"
+djangorestframework = ">=3.10.3, <4.0"
+django-hawk = "^1.1.0"
 
 [tool.poetry.group.testing]
 optional = true

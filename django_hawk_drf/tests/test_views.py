@@ -66,8 +66,8 @@ class DjangoHawkViewTests:
         )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        if hasattr(response, "headers"):
-            self.assertTrue("Server-Authorization" in response.headers)
+        self.assertTrue("Content-Type" in response)
+        self.assertTrue("Server-Authorization" in response)
 
     @override_settings(
         DJANGO_HAWK={
@@ -90,8 +90,8 @@ class DjangoHawkViewTests:
         )
 
         self.assertEqual(response.status_code, 200)
-        if hasattr(response, "headers"):
-            self.assertTrue("Server-Authorization" in response.headers)
+        self.assertTrue("Content-Type" in response)
+        self.assertTrue("Server-Authorization" in response)
 
         repeat_response = self.client.get(
             url,
@@ -131,8 +131,9 @@ class DjangoHawkViewTests:
                 "detail": "Incorrect authentication credentials.",
             },
         )
-        if hasattr(response, "headers"):
-            self.assertTrue("Server-Authorization" not in response.headers)
+
+        self.assertTrue("Content-Type" in response)
+        self.assertTrue("Server-Authorization" not in response)
 
     @override_settings(
         DJANGO_HAWK={
@@ -164,5 +165,5 @@ class DjangoHawkViewTests:
                 "detail": "Incorrect authentication credentials.",
             },
         )
-        if hasattr(response, "headers"):
-            self.assertTrue("Server-Authorization" not in response.headers)
+        self.assertTrue("Content-Type" in response)
+        self.assertTrue("Server-Authorization" not in response)

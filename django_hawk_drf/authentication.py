@@ -6,6 +6,7 @@ from django_hawk.utils import DjangoHawkAuthenticationFailed, authenticate_reque
 from mohawk import Receiver
 from rest_framework.authentication import BaseAuthentication
 from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.request import Request
 
 logger = logging.getLogger(__name__)
 
@@ -20,13 +21,12 @@ class HawkAuthentication(BaseAuthentication):
 
         return "Hawk"
 
-    def authenticate(self, request) -> Tuple[AnonymousUser, Receiver]:
+    def authenticate(self, request: Request) -> Tuple[AnonymousUser, Receiver]:
         """
         Authenticates a request using Hawk signature
         If either of these suggest we cannot authenticate, AuthenticationFailed
         is raised, as required in the DRF authentication flow
         """
-
         try:
             hawk_receiver = authenticate_request(request=request)
         except DjangoHawkAuthenticationFailed as e:

@@ -10,9 +10,24 @@ Read the [Django Hawk installation](https://github.com/uktrade/django-hawk#insta
 
 Read the [Django Hawk example usage](https://github.com/uktrade/django-hawk#example-usage) documentation.
 
+Add the `HawkResponseMiddleware` to the `MIDDLEWARE` setting in your project like so:
+
+```
+MIDDLEWARE = [
+    ...
+    "django_hawk.middleware.HawkResponseMiddleware",
+    "django_hawk_drf.middleware.HawkResponseMiddleware",
+    ...
+]
+```
+
+To check the you can use the `django_hawk.authentication.HawkAuthentication` authentication class.
+
 ```python
-from django_hawk_drf.authentication import HawkAuthentication
+from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
+
+from django_hawk_drf.authentication import HawkAuthentication
 
 
 class ExampleViewSet(ViewSet):
@@ -20,7 +35,7 @@ class ExampleViewSet(ViewSet):
     permission_classes = ()
 
     def list(self, request):
-        return super().list(request)
+        return Response([])
 ```
 
 ## Testing

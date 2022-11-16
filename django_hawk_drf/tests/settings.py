@@ -9,6 +9,7 @@ SECRET_KEY = django.utils.crypto.get_random_string(50)
 INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
+    "rest_framework",
 ]
 
 TEMPLATES = [
@@ -37,4 +38,5 @@ ROOT_URLCONF = "django_hawk_drf.tests.urls"
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django_hawk.middleware.HawkResponseMiddleware",
+    "django_hawk_drf.middleware.HawkResponseMiddleware",
 ]
