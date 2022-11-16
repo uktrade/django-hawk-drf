@@ -36,4 +36,5 @@ ROOT_URLCONF = "django_hawk_drf.tests.urls"
 
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django_hawk.middleware.HawkResponseMiddleware",
 ]

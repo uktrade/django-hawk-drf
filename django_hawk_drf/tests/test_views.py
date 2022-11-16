@@ -66,6 +66,42 @@ class DjangoHawkViewTests:
         )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        if hasattr(response, "headers"):
+            self.assertTrue("Server-Authorization" in response.headers)
+
+    @override_settings(
+        DJANGO_HAWK={
+            "HAWK_INCOMING_ACCESS_KEY": "some-id",
+            "HAWK_INCOMING_SECRET_KEY": "some-secret",
+        }
+    )
+    def test_seen_nonce(self):
+        """
+        Test if reusing a nonce within 60 seconds is rejected
+        """
+
+        url = self.get_url()
+        sender = hawk_auth_sender(url=url)
+        response = self.client.get(
+            url,
+            content_type="",
+            HTTP_AUTHORIZATION=sender.request_header,
+            HTTP_X_FORWARDED_FOR="1.2.3.4, 123.123.123.123",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        if hasattr(response, "headers"):
+            self.assertTrue("Server-Authorization" in response.headers)
+
+        repeat_response = self.client.get(
+            url,
+            content_type="",
+            HTTP_AUTHORIZATION=sender.request_header,
+            HTTP_X_FORWARDED_FOR="1.2.3.4, 123.123.123.123",
+        )
+        self.assertEqual(repeat_response.status_code, 401)
+        if hasattr(repeat_response, "headers"):
+            self.assertTrue("Server-Authorization" not in repeat_response.headers)
 
     @override_settings(
         DJANGO_HAWK={
@@ -95,6 +131,8 @@ class DjangoHawkViewTests:
                 "detail": "Incorrect authentication credentials.",
             },
         )
+        if hasattr(repeat_response, "headers"):
+            self.assertTrue("Server-Authorization" not in repeat_response.headers)
 
     @override_settings(
         DJANGO_HAWK={
@@ -126,3 +164,5 @@ class DjangoHawkViewTests:
                 "detail": "Incorrect authentication credentials.",
             },
         )
+        if hasattr(repeat_response, "headers"):
+            self.assertTrue("Server-Authorization" not in repeat_response.headers)

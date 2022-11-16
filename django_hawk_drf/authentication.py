@@ -1,7 +1,7 @@
 import logging
 from typing import Tuple
 
-from django.contrib.auth import AnonymousUser
+from django.contrib.auth.models import AnonymousUser
 from django_hawk.utils import DjangoHawkAuthenticationFailed, authenticate_request
 from mohawk import Receiver
 from rest_framework.authentication import BaseAuthentication
