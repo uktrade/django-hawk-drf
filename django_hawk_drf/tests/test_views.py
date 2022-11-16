@@ -131,8 +131,8 @@ class DjangoHawkViewTests:
                 "detail": "Incorrect authentication credentials.",
             },
         )
-        if hasattr(repeat_response, "headers"):
-            self.assertTrue("Server-Authorization" not in repeat_response.headers)
+        if hasattr(response, "headers"):
+            self.assertTrue("Server-Authorization" not in response.headers)
 
     @override_settings(
         DJANGO_HAWK={
@@ -164,5 +164,5 @@ class DjangoHawkViewTests:
                 "detail": "Incorrect authentication credentials.",
             },
         )
-        if hasattr(repeat_response, "headers"):
-            self.assertTrue("Server-Authorization" not in repeat_response.headers)
+        if hasattr(response, "headers"):
+            self.assertTrue("Server-Authorization" not in response.headers)
