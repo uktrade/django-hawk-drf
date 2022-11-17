@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.poetry]
 name = "django-hawk-drf"
-version = "0.0.1"
+version = "1.0.0"
 description = "Authenticate Django Rest Framework Views with django-hawk"
 authors = [
     "Cameron Lamb <live.services@digital.trade.gov.uk>"
