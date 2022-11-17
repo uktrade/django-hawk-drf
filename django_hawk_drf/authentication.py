@@ -1,12 +1,13 @@
 import logging
 from typing import Tuple
 
-from django.contrib.auth.models import AnonymousUser
 from django_hawk.utils import DjangoHawkAuthenticationFailed, authenticate_request
 from mohawk import Receiver
 from rest_framework.authentication import BaseAuthentication
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.request import Request
+
+from django_hawk_drf.models import HawkAuthenticatedUser
 
 logger = logging.getLogger(__name__)
 
@@ -21,7 +22,7 @@ class HawkAuthentication(BaseAuthentication):
 
         return "Hawk"
 
-    def authenticate(self, request: Request) -> Tuple[AnonymousUser, Receiver]:
+    def authenticate(self, request: Request) -> Tuple[HawkAuthenticatedUser, Receiver]:
         """
         Authenticates a request using Hawk signature
         If either of these suggest we cannot authenticate, AuthenticationFailed
@@ -32,4 +33,4 @@ class HawkAuthentication(BaseAuthentication):
         except DjangoHawkAuthenticationFailed as e:
             raise AuthenticationFailed(str(e))
 
-        return (AnonymousUser(), hawk_receiver)
+        return (HawkAuthenticatedUser(), hawk_receiver)

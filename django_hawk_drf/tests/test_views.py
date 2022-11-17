@@ -100,8 +100,7 @@ class DjangoHawkViewTests:
             HTTP_X_FORWARDED_FOR="1.2.3.4, 123.123.123.123",
         )
         self.assertEqual(repeat_response.status_code, 401)
-        if hasattr(repeat_response, "headers"):
-            self.assertTrue("Server-Authorization" not in repeat_response.headers)
+        self.assertTrue("Server-Authorization" not in repeat_response)
 
     @override_settings(
         DJANGO_HAWK={
