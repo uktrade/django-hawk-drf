@@ -12,7 +12,7 @@ help:
 	@echo -e "$(COLOUR_YELLOW)make setup$(COLOUR_NONE) : Initalise the poetry environment"
 	@echo -e "$(COLOUR_YELLOW)make cleanup-code$(COLOUR_NONE) : Run flake8, black, isort, mypy"
 	@echo -e "$(COLOUR_YELLOW)make tox$(COLOUR_NONE) : Run tests with tox"
-	@echo -e "$(COLOUR_YELLOW)make build$(COLOUR_NONE) : Build the package"
+	@echo -e "$(COLOUR_YELLOW)make build-package$(COLOUR_NONE) : Build the package"
 	@echo -e "$(COLOUR_YELLOW)make push-pypi-test$(COLOUR_NONE) : Push the build package to https://test.pypi.org/project/django-hawk-drf/"
 	@echo -e "$(COLOUR_YELLOW)make push-pypi$(COLOUR_NONE) : Push the built package to https://pypi.org/project/django-hawk-drf/"
 
@@ -28,7 +28,7 @@ cleanup-code:
 tox:
 	poetry run tox
 
-build:
+build-package:
 	poetry build
 
 push-pypi-test:

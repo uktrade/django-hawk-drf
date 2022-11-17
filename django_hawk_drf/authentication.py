@@ -1,15 +1,24 @@
 import logging
 from typing import Tuple
 
+from django.contrib.auth.models import AnonymousUser
 from django_hawk.utils import DjangoHawkAuthenticationFailed, authenticate_request
 from mohawk import Receiver
 from rest_framework.authentication import BaseAuthentication
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.request import Request
 
-from django_hawk_drf.models import HawkAuthenticatedUser
-
 logger = logging.getLogger(__name__)
+
+
+class HawkAuthenticatedUser(AnonymousUser):
+    """
+    This is a user that is authenticated using Hawk
+    """
+
+    @property
+    def is_authenticated(self):
+        return True
 
 
 class HawkAuthentication(BaseAuthentication):
