@@ -12,9 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 class HawkAuthenticatedUser(AnonymousUser):
-    """
-    This is a user that is authenticated using Hawk
-    """
+    """This is a user that is authenticated using Hawk"""
 
     @property
     def is_authenticated(self):
