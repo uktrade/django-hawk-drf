@@ -10,36 +10,47 @@ Read the [Django Hawk installation](https://github.com/uktrade/django-hawk#insta
 
 Read the [Django Hawk example usage](https://github.com/uktrade/django-hawk#example-usage) documentation.
 
+Add the `HawkResponseMiddleware` to the `MIDDLEWARE` setting in your project like so:
+
+```
+MIDDLEWARE = [
+    ...
+    "django_hawk.middleware.HawkResponseMiddleware",
+    "django_hawk_drf.middleware.HawkResponseMiddleware",
+    ...
+]
+```
+
+To check the you can use the `django_hawk.authentication.HawkAuthentication` authentication class.
+
 ```python
-from django_hawk_drf.authentication import HawkAuthentication
-from django_hawk.middleware import HawkResponseMiddleware
-
-from django.utils.decorators import decorator_from_middleware
-
+from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
+
+from django_hawk_drf.authentication import HawkAuthentication
 
 
 class ExampleViewSet(ViewSet):
     authentication_classes = (HawkAuthentication,)
     permission_classes = ()
 
-    @decorator_from_middleware(HawkResponseMiddleware)
     def list(self, request):
-        return super().list(request)
+        return Response([])
 ```
 
 ## Testing
 
 Tests belong in the `/django_hawk_drf/tests/` directory. You can run the tests by installing the requirements like so:
 
+
 ```
-pip install -r dev-requirements.txt
+make setup
 ```
 
 Now you can run the tests using the following command:
 
 ```
-./manage.py test
+poetry run python manage.py test
 ```
 
 ### Tox tests
@@ -49,7 +60,7 @@ We use [tox](https://pypi.org/project/tox/) to test compatibility across differe
 To run these tests with tox, just run the following:
 
 ```
-tox
+make tox
 ```
 
 ## Pushing to PyPI
@@ -57,6 +68,6 @@ tox
 - [PyPI Package](https://pypi.org/project/django-hawk-drf/)
 - [Test PyPI Package](https://test.pypi.org/project/django-hawk-drf/)
 
-Running `make build` will build the package into the `dist/` directory
+Running `make build-package` will build the package into the `dist/` directory
 Running `make push-pypi-test` will push the built package to Test PyPI
 Running `make push-pypi` will push the built package to PyPI
