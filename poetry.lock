@@ -85,7 +85,7 @@ python-versions = "*"
 
 [[package]]
 name = "django"
-version = "3.2.16"
+version = "3.2.18"
 description = "A high-level Python Web framework that encourages rapid development and clean, pragmatic design."
 category = "main"
 optional = false
@@ -510,7 +510,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=4.6)", "pytest-black (
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.6.2,<4.0"
-content-hash = "88a91332b02eb023e3dc6ddee752ddc515a8ad699d6aa70d6992a4afe676d2b5"
+content-hash = "a157943fb24dd492969e52890ed52c58ff828ebacf0ffa08816b7680bffe2eb1"
 
 [metadata.files]
 asgiref = [
@@ -608,8 +608,8 @@ distlib = [
     {file = "distlib-0.3.6.tar.gz", hash = "sha256:14bad2d9b04d3a36127ac97f30b12a19268f211063d8f8ee4f47108896e11b46"},
 ]
 django = [
-    {file = "Django-3.2.16-py3-none-any.whl", hash = "sha256:18ba8efa36b69cfcd4b670d0fa187c6fe7506596f0ababe580e16909bcdec121"},
-    {file = "Django-3.2.16.tar.gz", hash = "sha256:3adc285124244724a394fa9b9839cc8cd116faf7d159554c43ecdaa8cdf0b94d"},
+    {file = "Django-3.2.18-py3-none-any.whl", hash = "sha256:4d492d9024c7b3dfababf49f94511ab6a58e2c9c3c7207786f1ba4eb77750706"},
+    {file = "Django-3.2.18.tar.gz", hash = "sha256:08208dfe892eb64fff073ca743b3b952311104f939e7f6dae954fe72dcc533ba"},
 ]
 django-hawk = [
     {file = "django_hawk-1.1.0-py3-none-any.whl", hash = "sha256:f4ccd77dc98659362cd1b7cf6cc2ea6a8f5f1192de7c3786cedeea3c4145517c"},
