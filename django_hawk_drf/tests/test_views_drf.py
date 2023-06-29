@@ -35,3 +35,21 @@ class DjangoRestFrameworkTests(DjangoHawkViewTests, TestCase):
         self.assertIsInstance(response.wsgi_request.user, HawkAuthenticatedUser)
         self.assertTrue(response.wsgi_request.user.is_authenticated)
         self.assertTrue(response.wsgi_request.user.is_anonymous)
+
+    def test_no_hawk_auth(self):
+        url = self.get_url()
+        response = APIClient().get(
+            url,
+            content_type="",
+            HTTP_X_FORWARDED_FOR="1.2.3.4, 123.123.123.123",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(
+            response.content,
+            b'{"detail":"Authentication credentials were not provided."}',
+        )
+        self.assertTrue("Content-Type" in response)
+        self.assertFalse("Server-Authorization" in response)
+        self.assertFalse(response.wsgi_request.user.is_authenticated)
+        self.assertTrue(response.wsgi_request.user.is_anonymous)
