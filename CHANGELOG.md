@@ -1,5 +1,8 @@
 # Django HAWK DRF
 
+## 1.1.2
+- Allow Django 5.0
+
 ## 1.1.1
 - Update pytz to 2023.3
 - Update sqlparse to 0.4.4
